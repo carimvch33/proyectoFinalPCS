@@ -14,7 +14,7 @@
 
 .button-sidebar:focused,
 .button-sidebar:pressed {
-    -fx-background-color: #DEDEDE;
+    -fx-background-color: #EDEDED;
     -fx-background-radius: 8px;
 }
 
@@ -26,7 +26,7 @@
     -fx-border-color: rgba(255, 255, 255, 0.3);
     -fx-border-width: 4px;
     -fx-border-radius: 25px;
-    -fx-effect: dropshadow(three-pass-box, rgba(203, 205, 236, 0.8), 82, 0, 0, 38);
+    -fx-effect: dropshadow(three-pass-box, rgba(203, 205, 236, 0.8), 47, 0, 0, 18);
 }
 
 .pane-sidebar {
@@ -43,7 +43,7 @@
 }
 
 .sup-pane {
-    -fx-background-color: rgba(255, 255, 255);
+    -fx-background-color: linear-gradient(to right, #F9F9FF, #e7ecf8);
     -fx-background-radius: 0 20px 0 0;
     -fx-border-radius: 0 20px 0 0;
     -fx-border-color: rgba(255, 255, 255, 0.4);

@@ -13,8 +13,8 @@ public class Constantes {
     public static final String NOMBRE_BD = "coil_db";
     public static final String HOSTNAME = "localhost";
     public static final String PUERTO = "3306";
-    public static final String USUARIO = "jaft";
-    public static final String PASSWORD = "salamence";
+    public static final String USUARIO = "carim";
+    public static final String PASSWORD = "usuario0001";
     
     public static final DateTimeFormatter FORMATO_FECHAS = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     

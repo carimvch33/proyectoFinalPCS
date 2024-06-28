@@ -140,4 +140,16 @@ public class FXMLPrincipalCoordinadorController implements Initializable {
             Logger.getLogger(FXMLPrincipalCoordinadorController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void btnClicCerrar(ActionEvent event) {
+        Stage stage = (Stage) apVentana.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void btnClicMinimizar(ActionEvent event) {
+        Stage stage = (Stage) apVentana.getScene().getWindow();
+        stage.setIconified(true);
+    }
 }

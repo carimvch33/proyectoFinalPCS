@@ -5,7 +5,7 @@ package sistemacoil.modelo.pojo;
  * @author jafet
  */
 public class ProfesorExterno {
-    private int idProfesorExterno;
+    private Integer idProfesorExterno;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -14,9 +14,9 @@ public class ProfesorExterno {
     private String correo;
     private String telefono;
     private String abreviaturaUniversidad;
-    private int idPais;
-    private int idUniversidad;
-    private int idIdioma;
+    private Integer idPais;
+    private Integer idUniversidad;
+    private Integer idIdioma;
 
     public ProfesorExterno() {
     }

@@ -23,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import sistemacoil.modelo.dao.EstudianteDAO;
 import sistemacoil.modelo.pojo.Colaboracion;
 import sistemacoil.modelo.pojo.Estudiante;
 import sistemacoil.modelo.pojo.ProfesorExterno;
@@ -188,7 +189,13 @@ public class FXMLRegistrarEstudiantesController implements Initializable {
     
     private boolean validarMatriculaExistente(TextField tfMatricula) {
         String matricula = tfMatricula.getText();
+        Estudiante estudianteSeleccionado = tvEstudiantes.getSelectionModel().getSelectedItem();
+
         for (Estudiante estudiante : listaEstudiantes) {
+            if (estudianteSeleccionado != null && estudiante.getMatricula().equals(estudianteSeleccionado.getMatricula())) {
+                continue;
+            }
+
             if (estudiante.getMatricula().equals(matricula)) {
                 Animaciones.animarShake(tfMatricula);
                 lbErrorMatricula.setText("Matrícula ya existente*");
@@ -294,6 +301,20 @@ public class FXMLRegistrarEstudiantesController implements Initializable {
             }
         }
         tvEstudiantes.setItems(resultados);
+    }
+    
+    public static boolean registrarEstudiantesEnColaboracion(int idColaboracion, List<Estudiante> listaEstudiantes) {
+        boolean exito = true;
+        for (Estudiante estudiante : listaEstudiantes) {
+            exito = EstudianteDAO.registrarEstudiante(estudiante);
+            if (exito) {
+                exito = EstudianteDAO.relacionarEstudianteConColaboracion(idColaboracion, estudiante.getIdEstudiante());
+            }
+            if (!exito) {
+                break;
+            }
+        }
+        return exito;
     }
     
     private void navegarRegistrarColaboracion(AnchorPane apVentana, ProfesorExterno profesorExterno, 

@@ -1,4 +1,9 @@
 /*Estilos para Labels*/
+@font-face {
+    font-family: 'Inter SemiBold';
+    src: url('tipografias/Inter-SemiBold.ttf');
+}
+
 .title-label {
     -fx-font-family: 'Inter Bold';
     -fx-font-size: 34px;
@@ -29,5 +34,10 @@
 .alert-title-label {
     -fx-font-family: 'Inter Bold';
     -fx-font-size: 22px;
+}
+
+.app-label {
+    -fx-font-family: 'Inter SemiBold';
+    -fx-font-size: 32px;
 }
 

@@ -3,7 +3,7 @@ package sistemacoil.modelo.pojo;
 public class OfertaColaboracionExterna {
     
     private Integer idOfertaColaboracionExterna;
-    private String titulo;
+    private String nombreColaboracion;
     private String correo;
     private String carrera;
     private String profesorExterno;
@@ -22,9 +22,9 @@ public class OfertaColaboracionExterna {
     public OfertaColaboracionExterna() {
     }
 
-    public OfertaColaboracionExterna(Integer idOfertaColaboracionExterna, String titulo, String correo, String carrera, String profesorExterno, String asignatura, String departamento, String duracion, String estado, Integer idIdioma, Integer idPais, Integer idUniversidad, String idioma, String pais, String universidad, Integer idProfesorExterno) {
+    public OfertaColaboracionExterna(Integer idOfertaColaboracionExterna, String nombreColaboracion, String correo, String carrera, String profesorExterno, String asignatura, String departamento, String duracion, String estado, Integer idIdioma, Integer idPais, Integer idUniversidad, String idioma, String pais, String universidad, Integer idProfesorExterno) {
         this.idOfertaColaboracionExterna = idOfertaColaboracionExterna;
-        this.titulo = titulo;
+        this.nombreColaboracion = nombreColaboracion;
         this.correo = correo;
         this.carrera = carrera;
         this.profesorExterno = profesorExterno;
@@ -49,12 +49,12 @@ public class OfertaColaboracionExterna {
         this.idOfertaColaboracionExterna = idOfertaColaboracionExterna;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNombreColaboracion() {
+        return nombreColaboracion;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNombreColaboracion(String nombreColaboracion) {
+        this.nombreColaboracion = nombreColaboracion;
     }
 
     public String getCorreo() {
@@ -104,7 +104,7 @@ public class OfertaColaboracionExterna {
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
-    
+
     public String getEstado() {
         return estado;
     }

@@ -94,7 +94,7 @@ public class ColaboracionDAO {
 
         if (conexionBD != null) {
             String consulta = "SELECT c.idColaboracion, c.nombreColaboracion, " 
-                    + "CONCAT(pe.nombre, ' ', pe.apellidoPaterno, ' ', pe.apellidoMaterno) AS nombreProfesorExterno, " +
+                    + "CONCAT(pe.apellidoPaterno, '-', pe.apellidoMaterno, ', ', pe.nombre) AS nombreProfesorExterno, " +
                     "ee.nombre AS experienciaEducativa, c.fechaInicio, c.fechaConclusion, i.nombre AS idioma " +
                     "FROM colaboracion c " +
                     "JOIN profesorexterno pe ON c.idProfesorExterno = pe.idProfesorExterno " +
@@ -389,58 +389,64 @@ public class ColaboracionDAO {
         return periodos;
     }
     
-    public ArrayList<Colaboracion> obtenerColaboracionesPorPeriodoConIdProfUV(int idPeriodo, int idProfesorUV) {
-    Connection conexionBD = ConexionBD.obtenerConexion();
-    ArrayList<Colaboracion> colaboraciones = new ArrayList<>();
-    String consulta = "SELECT c.nombreColaboracion, i.nombre AS idioma, p.nombrePeriodo AS periodo, c.fechaInicio, c.fechaConclusion, " + 
-                    "ee.nombre AS experienciaEducativa, pe.nombre AS programaEducativo, d.nombre AS dependencia, " +
-                    "aa.nombre AS areaAcademica, CONCAT(puv.apellidoPaterno, '-', puv.apellidoMaterno, ', ', puv.nombre) AS profesorUV, " + 
-                    "CONCAT(pext.apellidoPaterno, '-', pext.apellidoMaterno, ', ', pext.nombre) AS profesorExterno, " +
-                    "c.objetivoCurso, c.perfilEstudiante, c.temaInteres, c.informacionAdicional " +
-                    "FROM colaboracion c " +
-                    "JOIN idioma i ON c.idIdioma = i.idIdioma " +
-                    "JOIN periodo p ON c.idPeriodo = p.idPeriodo " +
-                    "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa " +
-                    "JOIN programaeducativo pe ON ee.idProgramaEducativo = pe.idProgramaEducativo " +
-                    "JOIN dependencia d ON pe.idDependencia = d.idDependencia " +
-                    "JOIN areaacademica aa ON d.idAreaAcademica = aa.idAreaAcademica " +
-                    "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV " +
-                    "JOIN profesorexterno pext ON c.idProfesorExterno = pext.idProfesorExterno " +
-                    "WHERE c.idPeriodo = ? AND c.idProfesorUV = ?";
-    try (PreparedStatement stmt = conexionBD.prepareStatement(consulta)) {
-        stmt.setInt(1, idPeriodo);
-        stmt.setInt(2, idProfesorUV);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            Colaboracion colaboracion = new Colaboracion();
-            colaboracion.setNombreColaboracion(rs.getString("nombreColaboracion"));
-            colaboracion.setIdioma(rs.getString("idioma"));
-            colaboracion.setPeriodo(rs.getString("periodo"));
-            colaboracion.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
-            colaboracion.setFechaConclusion(rs.getDate("fechaConclusion").toLocalDate());
-            colaboracion.setExperienciaEducativa(rs.getString("experienciaEducativa"));
-            colaboracion.setProgramaEducativo(rs.getString("programaEducativo"));
-            colaboracion.setDependencia(rs.getString("dependencia"));
-            colaboracion.setAreaAcademica(rs.getString("areaAcademica"));
-            colaboracion.setProfesorUV(rs.getString("profesorUV"));
-            colaboracion.setNombreProfesorExterno(rs.getString("profesorExterno"));
-            colaboracion.setObjetivoCurso(rs.getString("objetivoCurso"));
-            colaboracion.setPerfilEstudiante(rs.getString("perfilEstudiante"));
-            colaboracion.setTemaInteres(rs.getString("temaInteres"));
-            colaboracion.setInformacionAdicional(rs.getString("informacionAdicional"));
-            colaboraciones.add(colaboracion);
+    public static boolean subirSyllabus(int idColaboracion, byte[] syllabus) {
+        String sql = "UPDATE colaboracion SET syllabus = ? WHERE idColaboracion = ?";
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setBytes(1, syllabus);
+            stmt.setInt(2, idColaboracion);
+            int filasAfectadas = stmt.executeUpdate();
+            return filasAfectadas > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    } finally {
-        try {
-            if (conexionBD != null) {
-                conexionBD.close();
+    }
+    
+    public ArrayList<Colaboracion> obtenerColaboracionesPorPeriodoConIdProfUV(int idPeriodo, int idProfesorUV) {
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        ArrayList<Colaboracion> colaboraciones = new ArrayList<>();
+        String consulta = "SELECT c.nombreColaboracion, i.nombre AS idioma, p.nombrePeriodo AS periodo, c.fechaInicio, c.fechaConclusion, " + 
+                        "ee.nombre AS experienciaEducativa, pe.nombre AS programaEducativo, d.nombre AS dependencia, " +
+                        "aa.nombre AS areaAcademica, CONCAT(puv.apellidoPaterno, '-', puv.apellidoMaterno, ', ', puv.nombre) AS profesorUV, " + 
+                        "CONCAT(pext.apellidoPaterno, '-', pext.apellidoMaterno, ', ', pext.nombre) AS profesorExterno, " +
+                        "c.objetivoCurso, c.perfilEstudiante, c.temaInteres, c.informacionAdicional " +
+                        "FROM colaboracion c " +
+                        "JOIN idioma i ON c.idIdioma = i.idIdioma " +
+                        "JOIN periodo p ON c.idPeriodo = p.idPeriodo " +
+                        "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa " +
+                        "JOIN programaeducativo pe ON ee.idProgramaEducativo = pe.idProgramaEducativo " +
+                        "JOIN dependencia d ON pe.idDependencia = d.idDependencia " +
+                        "JOIN areaacademica aa ON d.idAreaAcademica = aa.idAreaAcademica " +
+                        "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV " +
+                        "JOIN profesorexterno pext ON c.idProfesorExterno = pext.idProfesorExterno " +
+                        "WHERE c.idPeriodo = ? AND c.idProfesorUV = ?";
+        try (PreparedStatement stmt = conexionBD.prepareStatement(consulta)) {
+            stmt.setInt(1, idPeriodo);
+            stmt.setInt(2, idProfesorUV);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Colaboracion colaboracion = new Colaboracion();
+                colaboracion.setNombreColaboracion(rs.getString("nombreColaboracion"));
+                colaboracion.setIdioma(rs.getString("idioma"));
+                colaboracion.setPeriodo(rs.getString("periodo"));
+                colaboracion.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                colaboracion.setFechaConclusion(rs.getDate("fechaConclusion").toLocalDate());
+                colaboracion.setExperienciaEducativa(rs.getString("experienciaEducativa"));
+                colaboracion.setProgramaEducativo(rs.getString("programaEducativo"));
+                colaboracion.setDependencia(rs.getString("dependencia"));
+                colaboracion.setAreaAcademica(rs.getString("areaAcademica"));
+                colaboracion.setProfesorUV(rs.getString("profesorUV"));
+                colaboracion.setNombreProfesorExterno(rs.getString("profesorExterno"));
+                colaboracion.setObjetivoCurso(rs.getString("objetivoCurso"));
+                colaboracion.setPerfilEstudiante(rs.getString("perfilEstudiante"));
+                colaboracion.setTemaInteres(rs.getString("temaInteres"));
+                colaboracion.setInformacionAdicional(rs.getString("informacionAdicional"));
+                colaboraciones.add(colaboracion);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }
-    return colaboraciones;
+        return colaboraciones;
     }
 }

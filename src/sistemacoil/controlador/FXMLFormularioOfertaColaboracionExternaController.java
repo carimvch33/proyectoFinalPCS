@@ -43,6 +43,8 @@ public class FXMLFormularioOfertaColaboracionExternaController implements Initia
     private ObservableList<Universidad> universidades;
     private ProfesorExterno profesorExterno;
     private OfertaColaboracionExterna ofertaExterna;
+        private OfertaColaboracionExternaDAO ofertaColaboracionExternaDAO; // Declaración del DAO
+
 
     @FXML
     private AnchorPane apVentana;
@@ -100,11 +102,11 @@ public class FXMLFormularioOfertaColaboracionExternaController implements Initia
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ofertaColaboracionExternaDAO = new OfertaColaboracionExternaDAO(); // Inicialización del DAO
         ofertaExterna = new OfertaColaboracionExterna();
         cargarPaises();
         cargarIdiomas();
         configurarListeners();
-        
     }
 
     public void inicializarValores(ObservadorColaboraciones observador) {
@@ -165,29 +167,32 @@ public class FXMLFormularioOfertaColaboracionExternaController implements Initia
 
     private OfertaColaboracionExterna guardarDatosOfertaExterna() {
         ofertaExterna = new OfertaColaboracionExterna();
-        ofertaExterna.setTitulo(tfNombre.getText().trim());
+        ofertaExterna.setNombreColaboracion(tfNombre.getText().trim());
         ofertaExterna.setCorreo(tfCorreo.getText().trim());
         ofertaExterna.setCarrera(tfCarrera.getText().trim());
         ofertaExterna.setAsignatura(tfAsignatura.getText().trim());
         ofertaExterna.setDepartamento(tfDepartamento.getText().trim());
         ofertaExterna.setDuracion(tfDuracion.getText().trim());
-
-        if (cbIdiomas.getSelectionModel().getSelectedItem() != null)
+        
+        if (cbIdiomas.getSelectionModel().getSelectedItem() != null) {
             ofertaExterna.setIdIdioma(cbIdiomas.getSelectionModel().getSelectedItem().getIdIdioma());
-        
-        if (cbPaises.getSelectionModel().getSelectedItem() != null)
-            ofertaExterna.setIdPais(cbPaises.getSelectionModel().getSelectedItem().getIdPais());
+        }
 
-        if (cbUniversidades.getSelectionModel().getSelectedItem() != null)
+        if (cbPaises.getSelectionModel().getSelectedItem() != null) {
+            ofertaExterna.setIdPais(cbPaises.getSelectionModel().getSelectedItem().getIdPais());
+        }
+
+        if (cbUniversidades.getSelectionModel().getSelectedItem() != null) {
             ofertaExterna.setIdUniversidad(cbUniversidades.getSelectionModel().getSelectedItem().getIdUniversidad());
-        
+        }
+
         return ofertaExterna;
     }
 
     public void cargarDatosOfertaExterna(OfertaColaboracionExterna ofertaExterna) {
         this.ofertaExterna = ofertaExterna;
         if (ofertaExterna != null) {
-            tfNombre.setText(ofertaExterna.getTitulo() != null ? ofertaExterna.getTitulo() : "");
+            tfNombre.setText(ofertaExterna.getNombreColaboracion()!= null ? ofertaExterna.getNombreColaboracion(): "");
             tfCorreo.setText(ofertaExterna.getCorreo() != null ? ofertaExterna.getCorreo() : "");
             tfCarrera.setText(ofertaExterna.getCarrera() != null ? ofertaExterna.getCarrera() : "");
             tfAsignatura.setText(ofertaExterna.getAsignatura() != null ? ofertaExterna.getAsignatura() : "");
@@ -242,13 +247,20 @@ public class FXMLFormularioOfertaColaboracionExternaController implements Initia
 
     }
 
-    private void registrarOfertaColaboracionExterna(OfertaColaboracionExterna ofertaColaboracionExterna) {
-        HashMap<String, Object> respuesta = OfertaColaboracionExternaDAO.registrarOfertaColaboracionExterna(ofertaColaboracionExterna);
-        if (!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
-            Utils.mostrarAlertaSimple("Registro exitoso", "La oferta de colaboración externa ha sido registrada correctamente", apVentana);
-            observador.operacionExitosa("Alta", ofertaColaboracionExterna.getTitulo());
-        } else
-            Utils.mostrarAlertaSimple("Registro fallido", "La oferta de colaboración externa no ha podido ser registrada", apVentana);
+     private void registrarOfertaColaboracionExterna(OfertaColaboracionExterna ofertaColaboracionExterna) {
+        if (ofertaColaboracionExternaDAO != null) { // Verifica si el DAO no es nulo
+            HashMap<String, Object> respuesta = ofertaColaboracionExternaDAO.registrarOfertaColaboracionExterna(ofertaColaboracionExterna);
+            if (!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
+                Utils.mostrarAlertaSimple("Registro fallido", "La oferta de colaboración externa no ha podido ser registrada", apVentana);
+                if (observador != null) {
+                    observador.operacionExitosa("Alta", ofertaColaboracionExterna.getNombreColaboracion());
+                }
+            } else {
+                Utils.mostrarAlertaSimple("Registro exitoso", "La oferta de colaboración externa ha sido registrada correctamente", apVentana);
+            }
+        } else {
+            Utils.mostrarAlertaSimple("Error de inicialización", "El DAO de oferta de colaboración externa no ha sido inicializado correctamente", apVentana);
+        }
     }
 
     @FXML

@@ -45,9 +45,9 @@ public class SistemaCOIL extends Application {
     }
 
     public void cargarFuentes() {
+        Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-Bold.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-Regular.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-Medium.ttf"), 12);
-        Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-Bold.ttf"), 12);
-        Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-ExtraBold.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/sistemacoil/estilos/tipografias/Inter-SemiBold.ttf"), 12);
     }
 }

@@ -13,15 +13,22 @@ public class OfertaColaboracionExternaDAO {
     public static HashMap<String, Object> registrarOfertaColaboracionExterna(OfertaColaboracionExterna ofertaColaboracionExterna) {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
+
+        if (ofertaColaboracionExterna == null) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Oferta de Colaboración Externa es null.");
+            return respuesta;
+        }
+
         Connection conexionBD = ConexionBD.obtenerConexion();
+
         if (conexionBD != null) {
             String sentencia = "INSERT INTO ofertacolaboracionexterna "
-                    + "(titulo, periodo, idProfesorExterno, asignatura, idIdioma, idPais, idUniversidad, "
+                    + "(nombreColaboracion, duracion, idProfesorExterno, asignatura, idIdioma, idPais, idUniversidad, "
                     + "estado, correo, carrera, departamento) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(sentencia);
-                prepararSentencia.setString(1, ofertaColaboracionExterna.getTitulo());
+                prepararSentencia.setString(1, ofertaColaboracionExterna.getNombreColaboracion());
                 prepararSentencia.setString(2, ofertaColaboracionExterna.getDuracion());
                 prepararSentencia.setInt(3, ofertaColaboracionExterna.getIdProfesorExterno());
                 prepararSentencia.setString(4, ofertaColaboracionExterna.getAsignatura());
@@ -39,10 +46,12 @@ public class OfertaColaboracionExternaDAO {
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, ha ocurrido un error al registrar la Oferta de Colaboración Externa, favor de verificar la información.");
                 }
+                prepararSentencia.close();
                 conexionBD.close();
             } catch (SQLException ex) {
-                ex.printStackTrace();
-                respuesta.put(Constantes.KEY_MENSAJE, ex.getMessage());
+                respuesta.put(Constantes.KEY_MENSAJE, "Error al ejecutar la consulta SQL: " + ex.getMessage());
+            } catch (NullPointerException ex) {
+                respuesta.put(Constantes.KEY_MENSAJE, "Error: Se ha encontrado un objeto nulo.");
             }
         } else {
             respuesta.put(Constantes.KEY_MENSAJE, Constantes.ERROR_CONEXION);

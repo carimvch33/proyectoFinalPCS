@@ -17,7 +17,12 @@
                <children>
                   <Pane prefHeight="80.0" prefWidth="330.0">
                      <children>
-                        <HBox prefHeight="80.0" prefWidth="330.0" />
+                        <Label layoutX="81.0" layoutY="29.0" styleClass="app-label" stylesheets="@../estilos/estilosLabel.css" text="Sistema COIL" textFill="#1869e2" />
+                        <ImageView fitHeight="56.0" fitWidth="54.0" layoutX="22.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../recursos/coil-icon2.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <VBox layoutX="15.0" layoutY="167.0" prefHeight="200.0" prefWidth="300.0" spacing="2.0">
@@ -127,6 +132,24 @@
                               <Label styleClass="regular-label" stylesheets="@../estilos/estilosLabel.css" text="PROFESOR UV  |  EN LÍNEA" />
                            </children>
                         </VBox>
+                        <Button layoutX="1084.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnClicCerrar" prefHeight="46.0" prefWidth="42.0" styleClass="action-button" stylesheets="@../estilos/estilosBotones.css">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="1020.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnClicMinimizar" prefHeight="46.0" prefWidth="42.0" styleClass="action-button" stylesheets="@../estilos/estilosBotones.css">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="action-button">
+                                 <image>
+                                    <Image url="@../recursos/iconos/minimize.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                   <AnchorPane fx:id="apVentana" prefHeight="848.0" prefWidth="1153.0" />

@@ -366,6 +366,7 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
                 formularioController.setProfesorExterno(profesorExterno);
                 irARegistrarOfertaExterna();
             }
+           
         }
     }
 }

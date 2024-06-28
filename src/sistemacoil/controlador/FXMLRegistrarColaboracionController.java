@@ -20,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import sistemacoil.modelo.dao.CatalogoDAO;
+import sistemacoil.modelo.dao.ColaboracionDAO;
 import sistemacoil.modelo.dao.ModuloUniversitarioDAO;
 import sistemacoil.modelo.pojo.AreaAcademica;
 import sistemacoil.modelo.pojo.Colaboracion;

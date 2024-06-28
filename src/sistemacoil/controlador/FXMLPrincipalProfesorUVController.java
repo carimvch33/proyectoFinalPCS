@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -152,5 +153,17 @@ public class FXMLPrincipalProfesorUVController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicCerrar(ActionEvent event) {
+        Stage stage = (Stage) apVentana.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void btnClicMinimizar(ActionEvent event) {
+        Stage stage = (Stage) apVentana.getScene().getWindow();
+        stage.setIconified(true);
     }
 }

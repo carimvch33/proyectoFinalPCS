@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import sistemacoil.modelo.dao.ColaboracionDAO;
 import sistemacoil.modelo.dao.EstudianteDAO;
 import sistemacoil.modelo.dao.EvidenciaDAO;
@@ -31,6 +34,7 @@ import sistemacoil.modelo.pojo.ProfesorExterno;
 import sistemacoil.modelo.pojo.ProfesorUV;
 import sistemacoil.utilidades.Animaciones;
 import sistemacoil.utilidades.Constantes;
+import sistemacoil.utilidades.Escenas;
 import sistemacoil.utilidades.Utils;
 
 public class FXMLSubirArchivosController implements Initializable {
@@ -175,7 +179,14 @@ public class FXMLSubirArchivosController implements Initializable {
 
         btnEliminarArchivo.setDisable(false);
     }
-    
+
+    private void mostrarErrorSubida() {
+        Utils.mostrarAlertaSimple("Error de carga", "Ocurrió un error al subir la evidencia", apVentana);
+    }
+
+    private void mostrarErrorLecturaArchivo() {
+        Utils.mostrarAlertaSimple("Error de lectura", "Ocurrió un error al leer el archivo de evidencia", apVentana);
+    }
 
     @FXML
     private void btnClicCancelar(ActionEvent event) {
@@ -201,78 +212,87 @@ public class FXMLSubirArchivosController implements Initializable {
 
         if (archivosSeleccionados != null && archivosSeleccionados.size() > 0) {
             File evidencia = archivosSeleccionados.get(0);
-            if (validarArchivo(evidencia))
+            if (validarArchivo(evidencia)) {
                 cargarArchivo(evidencia);
+            }
         }
     }
-    
+
     @FXML
     private void btnClicSubir(ActionEvent event) {
-        if (subirEvidencias) {
-            try {
-                byte[] archivoBytes = java.nio.file.Files.readAllBytes(evidencia.toPath());
-                Evidencia nuevaEvidencia = new Evidencia();
-                nuevaEvidencia.setArchivoEvidencia(archivoBytes);
-                nuevaEvidencia.setIdColaboracion(idColaboracion);
-                boolean exito = EvidenciaDAO.subirEvidencia(nuevaEvidencia);
-                if (exito)
-                    Utils.mostrarAlertaSimple("Evidencia subida", "La evidencia ha sido subida exitosamente", apVentana);
-                else
-                    mostrarErrorSubida();
-            } catch (IOException e) {
-                mostrarErrorLecturaArchivo();
-            }
-        } else {
-            int idProfesorExterno = FXMLRegistrarProfesorExternoController.registrarProfesorExterno(profesorExterno);
-            if (idProfesorExterno != -1 && profesorUV != null && profesorUV.getIdProfesorUV() != 0) {
-                colaboracion.setIdProfesorExterno(idProfesorExterno);
-                colaboracion.setIdProfesorUV(profesorUV.getIdProfesorUV());
-                colaboracion.setEstado(Constantes.ESTADO_VIGENTE);
-                int idColaboracion = ColaboracionDAO.registrarColaboracion(colaboracion);
+        if (evidencia == null) {
+            Utils.mostrarAlertaSimple("Syllabus faltante", "Debe subir el syllabus antes de registrar la colaboración", apVentana);
+            return;
+        }
 
-                if (idColaboracion != -1) {
-                    colaboracion.setIdColaboracion(idColaboracion);
-                    boolean exitoEstudiantes = registrarEstudiantesEnColaboracion(idColaboracion, listaEstudiantes);
-                    if (exitoEstudiantes) {
-                        Utils.mostrarAlertaSimple("Registro exitoso", 
-                                "La información de la colaboración ha sido registrada exitosamente", apVentana);
+        if (subirEvidencias) {
+            subirEvidencia();
+        } else {
+            registrarColaboracionConProfesorExterno();
+        }
+    }
+
+    private void subirEvidencia() {
+        try {
+            byte[] archivoBytes = java.nio.file.Files.readAllBytes(evidencia.toPath());
+            Evidencia nuevaEvidencia = crearEvidencia(archivoBytes);
+            boolean exito = EvidenciaDAO.subirEvidencia(nuevaEvidencia);
+            if (exito) {
+                Utils.mostrarAlertaSimple("Evidencia subida", "La evidencia ha sido subida exitosamente", apVentana);
+            } else {
+                mostrarErrorSubida();
+            }
+        } catch (IOException e) {
+            mostrarErrorLecturaArchivo();
+        }
+    }
+
+    private Evidencia crearEvidencia(byte[] archivoBytes) {
+        Evidencia nuevaEvidencia = new Evidencia();
+        nuevaEvidencia.setArchivoEvidencia(archivoBytes);
+        nuevaEvidencia.setIdColaboracion(idColaboracion);
+        return nuevaEvidencia;
+    }
+
+    private void registrarColaboracionConProfesorExterno() {
+        int idProfesorExterno = FXMLRegistrarProfesorExternoController.registrarProfesorExterno(profesorExterno);
+        if (idProfesorExterno != -1 && profesorUV != null && profesorUV.getIdProfesorUV() != 0) {
+            if (registrarColaboracion(idProfesorExterno)) {
+                try {
+                    byte[] archivoBytes = java.nio.file.Files.readAllBytes(evidencia.toPath());
+                    boolean exitoSyllabus = ColaboracionDAO.subirSyllabus(idColaboracion, archivoBytes);
+                    if (exitoSyllabus) {
+                        Utils.mostrarAlertaSimple("Registro exitoso", "La información de la colaboración ha sido registrada exitosamente", apVentana);
+                        regresarAInicio();
                     } else {
-                        Utils.mostrarAlertaSimple("Registro fallido", "Ocurrió un error al registrar la lista de estudiantes", apVentana);
+                        Utils.mostrarAlertaSimple("Registro fallido", "Ocurrió un error al registrar el syllabus", apVentana);
                     }
-                } else {
-                    Utils.mostrarAlertaSimple("Registro fallido", "Ocurrió un error al registrar la colaboración", apVentana);
+                } catch (IOException e) {
+                    mostrarErrorLecturaArchivo();
                 }
             } else {
-                Utils.mostrarAlertaSimple("Registro fallido", "Ocurrió un error al registrar el profesor externo", apVentana);
+                Utils.mostrarAlertaSimple("Registro fallido", "Ocurrió un error al registrar la colaboración", apVentana);
             }
+        } 
+    }
+
+    private boolean registrarColaboracion(int idProfesorExterno) {
+        colaboracion.setIdProfesorExterno(idProfesorExterno);
+        colaboracion.setIdProfesorUV(profesorUV.getIdProfesorUV());
+        colaboracion.setEstado(Constantes.ESTADO_VIGENTE);
+        int idColaboracion = ColaboracionDAO.registrarColaboracion(colaboracion);
+
+        if (idColaboracion != -1) {
+            colaboracion.setIdColaboracion(idColaboracion);
+            this.idColaboracion = idColaboracion;
+            return FXMLRegistrarEstudiantesController.registrarEstudiantesEnColaboracion(idColaboracion, listaEstudiantes);
+        } else {
+            return false;
         }
     }
-    
-    /**/
 
-    public static boolean registrarEstudiantesEnColaboracion(int idColaboracion, ObservableList<Estudiante> listaEstudiantes) {
-        boolean exito = true;
-        for (Estudiante estudiante : listaEstudiantes) {
-            exito = EstudianteDAO.registrarEstudiante(estudiante);
-            if (exito) {
-                exito = EstudianteDAO.relacionarEstudianteConColaboracion(idColaboracion, estudiante.getIdEstudiante());
-            }
-            if (!exito) {
-                break;
-            }
-        }
-        return exito;
-    }
-
-    private void mostrarErrorSubida() {
-        if(subirEvidencias) {
-            Utils.mostrarAlertaSimple("Carga fallida", "Ocurrió un error al subir la evidencia", apVentana);
-        } else
-            Utils.mostrarAlertaSimple("Carga fallida", "Ocurrió un error al subir el syllabus", apVentana);
-    }
-
-    private void mostrarErrorLecturaArchivo() {
-        Utils.mostrarAlertaSimple("Lectura fallida", "Ocurrió un error al leer el archivo.", apVentana);
+    private void regresarAInicio() {
+        Utils.navegarVentana(Escenas.INICIO, apVentana);
     }
 
     @FXML
