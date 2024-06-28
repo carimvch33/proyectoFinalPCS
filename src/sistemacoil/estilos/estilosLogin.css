@@ -1,0 +1,29 @@
+
+
+.password-field-sup {
+    -fx-font-family: 'Inter';
+    -fx-font-size: 16px;
+    -fx-background-color: white;
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-padding: 18px 8px 2px 8px;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 8px 8px 0 0;
+}
+
+.password-field-inf {
+    -fx-font-family: 'Inter';
+    -fx-font-size: 16px;
+    -fx-background-color: white;
+    -fx-background-radius: 0 12px 12px;
+    -fx-padding: 18px 44px 2px 8px;
+    -fx-border-color: #D0D0D0;
+    -fx-border-width: 1px 2px 2px 2px;
+    -fx-border-radius: 0 0 12px 12px;
+}
+
+.label-tf {
+    -fx-font-family: 'Inter Medium';
+    -fx-font-size: 12px;
+    -fx-text-fill: #A1A0A3;
+}

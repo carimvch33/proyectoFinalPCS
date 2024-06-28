@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apVentana" prefHeight="848.0" prefWidth="1153.0" styleClass="anchor-pane" stylesheets="@../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.FXMLFormularioOfertaColaboracionExternaController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="30.0" prefHeight="44.0" prefWidth="767.0" spacing="18.0">
+         <children>
+            <Button fx:id="btnRegresar" alignment="CENTER" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="46.0" prefWidth="44.0" styleClass="action-button" stylesheets="@../estilos/estilosBotones.css" textOverrun="CLIP">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#4c92f580" height="42.56" offsetY="4.0" radius="21.0225" spread="0.49" width="43.53" />
+                     </effect>
+                     <image>
+                        <Image url="@../recursos/iconos/back-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Label prefHeight="41.0" prefWidth="830.0" styleClass="title-label" stylesheets="@../estilos/estilosLabel.css" text="Registrar Oferta de Colaboración Externa">
+               <font>
+                  <Font name="Inter Bold" size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane layoutX="32.0" layoutY="100.0" prefHeight="393.0" prefWidth="454.0" styleClass="pane" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="38.0" layoutY="32.0" prefHeight="42.0" prefWidth="378.0" spacing="12.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="purple-icon" stylesheets="@../estilos/estilosIconos.css">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../recursos/iconos/info-colab.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label styleClass="subtitle-label" stylesheets="@../estilos/estilosLabel.css" text="Info. de la Colaboración">
+                     <font>
+                        <Font name="Inter Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox layoutX="38.0" layoutY="94.0" prefHeight="90.0" prefWidth="378.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" stylesheets="@../estilos/estilosLabel.css" text="Nombre de la Colaboración:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfNombre" prefHeight="40.0" prefWidth="177.0" promptText="Ej: COMPUTER ADVANCE SCIENCES" stylesheets="@../estilos/estilosComponentes.css">
+                     <font>
+                        <Font name="Inter Regular" size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lbErrorNombre" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="188.0" prefHeight="90.0" prefWidth="177.0" spacing="4.0">
+               <children>
+                  <Label text="País/Región:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbPaises" prefHeight="40.0" prefWidth="177.0" promptText="Selec. un país..." stylesheets="@../estilos/estilosComponentes.css" visibleRowCount="5" />
+                  <Label fx:id="lbErrorPais" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="239.0" layoutY="188.0" prefHeight="90.0" prefWidth="177.0" spacing="4.0">
+               <children>
+                  <Label text="Idioma/Lenguaje:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbIdiomas" prefHeight="40.0" prefWidth="177.0" promptText="Selec. un idioma..." stylesheets="@../estilos/estilosComponentes.css" />
+                  <Label fx:id="lbErrorIdioma" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="282.0" prefHeight="91.0" prefWidth="378.0" spacing="4.0">
+               <children>
+                  <Label text="Duración aproximada (en días):">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfDuracion" prefHeight="40.0" promptText="Ej: 21 DÍAS" stylesheets="@../estilos/estilosComponentes.css" />
+                  <Label fx:id="lbErrorDuracion" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="534.0" layoutY="100.0" prefHeight="621.0" prefWidth="587.0" styleClass="pane" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="38.0" layoutY="32.0" prefHeight="42.0" prefWidth="417.0" spacing="12.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="blue-icon" stylesheets="@../estilos/estilosIconos.css">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../recursos/iconos/colab-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="35.0" prefWidth="429.0" styleClass="subtitle-label" stylesheets="@../estilos/estilosLabel.css" text="Profesor Colaborador">
+                     <font>
+                        <Font name="Inter Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox layoutX="38.0" layoutY="94.0" prefHeight="90.0" prefWidth="511.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" text="Profesor Colaborador:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="40.0" prefWidth="511.0" spacing="19.0">
+                     <children>
+                        <TextField fx:id="tfProfesorExterno" editable="false" prefHeight="40.0" prefWidth="333.0" stylesheets="@../estilos/estilosComponentes.css" />
+                        <Button fx:id="btnRegistrarProfeExterno" mnemonicParsing="false" onAction="#btnClicRegistrarProfesorExterno" prefHeight="40.0" prefWidth="180.0" styleClass="primary-button" stylesheets="@../estilos/estilosBotones.css" text="Registrar Prof. Externo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="lbErrorProfesorExterno" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="282.0" prefHeight="90.0" prefWidth="511.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" stylesheets="@../estilos/estilosLabel.css" text="Correo Electrónico:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCorreo" prefHeight="40.0" prefWidth="177.0" promptText="Ej: steve@newcastle.edu" stylesheets="@../estilos/estilosComponentes.css">
+                     <font>
+                        <Font name="Inter Regular" size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lbErrorCorreo" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="376.0" prefHeight="90.0" prefWidth="511.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" stylesheets="@../estilos/estilosLabel.css" text="Carrera Universitaria:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCarrera" prefHeight="40.0" prefWidth="177.0" promptText="Ej: SOFTWARE ENGINEERING" stylesheets="@../estilos/estilosComponentes.css">
+                     <font>
+                        <Font name="Inter Regular" size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lbErrorCarrera" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="306.0" layoutY="470.0" prefHeight="91.0" prefWidth="243.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" text="Asignatura:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfAsignatura" prefHeight="40.0" promptText="Ej: ADVANCE NETWORKING" stylesheets="@../estilos/estilosComponentes.css" />
+                  <Label fx:id="lbErrorAsignatura" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="470.0" prefHeight="91.0" prefWidth="243.0" spacing="4.0">
+               <children>
+                  <Label styleClass="tf-label" text="Departamento:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfDepartamento" prefHeight="40.0" promptText="Ej: TI SCIENCES" stylesheets="@../estilos/estilosComponentes.css" />
+                  <Label fx:id="lbErrorDepartamento" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="38.0" layoutY="188.0" prefHeight="90.0" prefWidth="511.0" spacing="4.0">
+               <children>
+                  <Label text="Universidad:">
+                     <font>
+                        <Font name="Inter Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbUniversidades" disable="true" prefHeight="40.0" prefWidth="537.0" promptText="Selecciona la universidad..." stylesheets="@../estilos/estilosComponentes.css" />
+                  <Label fx:id="lbErrorUniversidad" styleClass="error-label" stylesheets="@../estilos/estilosLabel.css">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-1.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutY="758.0" prefHeight="90.0" prefWidth="1153.0" styleClass="toolbar" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <HBox layoutX="659.0" layoutY="23.0" prefHeight="44.0" prefWidth="454.0" spacing="24.0">
+               <children>
+                  <Button fx:id="btnCancelarRegistro" mnemonicParsing="false" onAction="#btnClicCancelarRegistro" prefHeight="46.0" prefWidth="190.0" styleClass="secondary-button" stylesheets="@../estilos/estilosBotones.css" text="Cancelar Registro">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#btnClicRegistrarOferta" prefHeight="46.0" prefWidth="240.0" styleClass="primary-button" stylesheets="@../estilos/estilosBotones.css" text="Registrar Oferta Externa">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

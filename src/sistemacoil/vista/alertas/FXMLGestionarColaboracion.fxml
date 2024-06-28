@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="485.0" styleClass="transparent" stylesheets="@../../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.alertas.FXMLGestionarColaboracionController">
+   <children>
+      <Pane layoutX="62.0" layoutY="25.0" prefHeight="356.0" prefWidth="382.0" styleClass="pane-alert" stylesheets="@../../estilos/estilosPane.css">
+         <children>
+            <VBox alignment="CENTER" layoutX="26.0" layoutY="28.0" prefHeight="60.0" prefWidth="329.0" spacing="10.0">
+               <children>
+                  <Label styleClass="alert-title-label" stylesheets="@../../estilos/estilosLabel.css" text="Gestionar Colaboración" textAlignment="CENTER" />
+                  <Label styleClass="regular-label" stylesheets="@../../estilos/estilosLabel.css" text="Selecciona una opción..." textAlignment="CENTER" wrapText="true" />
+               </children>
+            </VBox>
+            <Button layoutY="298.0" mnemonicParsing="false" onAction="#btnClicConcluir" prefHeight="58.0" prefWidth="382.0" styleClass="alert-button-primary" stylesheets="@../../estilos/estilosBotones.css" text="Concluir Colaboración">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutY="240.0" mnemonicParsing="false" onAction="#btnClicSubirEvidencias" prefHeight="58.0" prefWidth="382.0" styleClass="alert-button-primary" stylesheets="@../../estilos/estilosBotones.css" text="Subir Evidencias">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutY="124.0" mnemonicParsing="false" onAction="#btnClicCerrar" prefHeight="58.0" prefWidth="382.0" styleClass="alert-button-secondary" stylesheets="@../../estilos/estilosBotones.css" text="Cerrar">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutY="182.0" mnemonicParsing="false" onAction="#btnClicEliminarEstudiantes" prefHeight="58.0" prefWidth="382.0" styleClass="alert-button-primary" stylesheets="@../../estilos/estilosBotones.css" text="Eliminar Estudiantes">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

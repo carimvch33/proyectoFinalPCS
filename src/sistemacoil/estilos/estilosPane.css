@@ -1,0 +1,53 @@
+/*Estilos para Panes y Cards*/
+.anchor-pane {
+    -fx-background-color: #EAEBF4;
+    -fx-background-radius: 0 0 20px 0;
+    -fx-border-radius: 0 0 20px 0;
+}
+
+.pane {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 25px;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 4px;
+    -fx-border-radius: 25px;
+    -fx-effect: dropshadow(three-pass-box, rgba(203, 205, 236, 0.8), 82, 0, 0, 38);
+}
+
+.toolbar {
+    -fx-padding: 0 32px;
+    -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(235, 238, 255, 0.9) 100%);
+    -fx-border-color: #F2F2F2;
+    -fx-border-width: 2px 0 0 0;
+    -fx-border-insets: 0 0 -2px 0;
+    -fx-background-radius: 0 0 20px 0;
+    -fx-border-radius: 0 0 20px 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(87, 44, 202, 0.1), 60, 0, 0, -20);
+}
+
+.drop-zone {
+    -fx-background-color: #EEEEF0;
+    -fx-border-color: #87878E;
+    -fx-border-style: dashed;
+    -fx-border-width: 2.5px;
+    -fx-border-radius: 16;
+    -fx-border-dash-array: 12 512;
+    -fx-background-radius: 16;
+}
+
+.pane-uv {
+    -fx-background-color: linear-gradient(to right, #0c44d4 0%, #0D47A1 100%);
+}
+
+.transparent {
+    -fx-background-color: transparent;
+}
+
+.pane-alert {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 4px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 62, 0, 0, 28);
+}

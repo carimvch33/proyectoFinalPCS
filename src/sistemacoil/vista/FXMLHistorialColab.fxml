@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apVentana" prefHeight="848.0" prefWidth="1153.0" styleClass="anchor-pane" stylesheets="@../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.FXMLHistorialColabController">
+   <children>
+      <Pane layoutX="32.0" layoutY="111.0" prefHeight="621.0" prefWidth="1089.0" styleClass="pane">
+         <children>
+            <TableView fx:id="tvPeriodos" layoutX="38.0" layoutY="150.0" prefHeight="386.0" prefWidth="1013.0" stylesheets="@../estilos/estilosTablas.css">
+              <columns>
+                <TableColumn fx:id="colHisPeriodos" prefWidth="1013.0" text="PERIODOS" />
+              </columns>
+            </TableView>
+            <Label layoutX="38.0" layoutY="49.0" styleClass="subtitle-label" stylesheets="@../estilos/estilosLabel.css" text="Historial de Colaboraciones">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="758.0" prefHeight="90.0" prefWidth="1153.0" styleClass="toolbar">
+         <children>
+            <Button layoutX="932.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnclicSiguiente" prefHeight="51.0" prefWidth="170.0" styleClass="primary-button" stylesheets="@../estilos/estilosBotones.css" text="Siguiente" />
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" layoutX="42.0" layoutY="40.0" prefHeight="44.0" prefWidth="608.0" spacing="18.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="44.0" styleClass="action-button" stylesheets="@../estilos/estilosBotones.css" textOverrun="CLIP">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#4c92f580" height="42.56" offsetY="4.0" radius="21.0225" spread="0.49" width="43.53" />
+                     </effect>
+                     <image>
+                        <Image url="@../recursos/iconos/back-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

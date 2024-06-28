@@ -1,0 +1,131 @@
+/* Estilos para componentes */
+
+@font-face {
+    font-family: 'Inter';
+    src: url('tipografias/Inter-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Inter Bold';
+    src: url('tipografias/Inter-Bold.ttf');
+}
+
+.primary-button {
+    -fx-font-family: 'Inter Medium';
+    -fx-background-color: linear-gradient(to bottom, #4B91F7, #367AF6);
+    -fx-text-fill: white;
+    -fx-background-radius: 14px;
+    -fx-font-size: 15px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 122, 255, 0.4), 42, 0, 0, 10);
+}
+
+.primary-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #3C83EC, #216CF4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 122, 255, 0.42), 52, 0, 0, 13);
+}
+
+.secondary-button {
+    -fx-font-family: 'Inter Medium';
+    -fx-background-color: #F2F2F7;
+    -fx-text-fill: #1F1F1F;
+    -fx-background-radius: 13px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 15px;
+    -fx-border-color: transparent;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #F1F1F1;
+}
+
+.third-button {
+    -fx-font-family: 'Inter';
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+    -fx-border-color: #D3D3D3;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 10px;
+}
+
+.third-button:pressed {
+    -fx-background-color: #FFBFBF;
+}
+
+.third-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+.third-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.fourth-button {
+    -fx-font-family: 'Inter';
+    -fx-background-color: transparent;
+    -fx-text-fill: #FF1654;
+    -fx-font-size: 16px;
+    -fx-padding: 0px 10px;
+}
+
+.fourth-button:hover {
+    -fx-underline: true;
+}
+
+.fourth-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+.simple {
+    -fx-font-family: 'Inter Medium';
+    -fx-font-size: 24px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #4B91F7;
+    -fx-font-size: 18px;
+    -fx-padding: 0px 10px;
+}
+
+.simple:hover {
+    -fx-underline: true;
+}
+
+.simple:disabled {
+    -fx-opacity: 0.5;
+}
+
+.action-button {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 2px;
+    -fx-border-radius: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 18, 0, 0, 20);
+}
+
+.alert-button-primary {
+    -fx-font-family: 'Inter Medium';
+    -fx-font-size: 18px;
+    -fx-background-color: transparent;
+    -fx-border-color: #B3B2B4;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-text-fill: #4B91F7;
+}
+
+.alert-button-primary:hover {
+    -fx-background-color: #F2F2F7;
+}
+
+.alert-button-secondary {
+    -fx-font-family: 'Inter Medium';
+    -fx-font-size: 18px;
+    -fx-background-color: transparent;
+    -fx-border-color: #B3B2B4;
+    -fx-border-width: 1px 1px 0px 0px;
+    -fx-text-fill: #FF1654;
+}
+
+.alert-button-secondary:hover {
+    -fx-background-color: #F2F2F7;
+}

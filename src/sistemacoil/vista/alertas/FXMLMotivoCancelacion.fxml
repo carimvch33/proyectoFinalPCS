@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="387.0" prefWidth="485.0" styleClass="transparent" stylesheets="@../../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.alertas.FXMLMotivoCancelacionController">
+   <children>
+      <Pane layoutX="62.0" layoutY="31.0" prefHeight="280.0" prefWidth="382.0" styleClass="pane-alert" stylesheets="@../../estilos/estilosPane.css">
+         <children>
+            <VBox alignment="CENTER" layoutX="33.0" layoutY="26.0" prefHeight="156.0" prefWidth="316.0" spacing="14.0">
+               <children>
+                  <Label styleClass="alert-title-label" stylesheets="@../../estilos/estilosLabel.css" text="Motivo de Cancelación" textAlignment="CENTER" />
+                  <TextArea fx:id="taMotivo" prefHeight="120.0" prefWidth="316.0" stylesheets="@../../estilos/estilosComponentes.css" />
+               </children>
+            </VBox>
+            <Label fx:id="lbLimiteCaracteres" layoutX="33.0" layoutY="191.0" styleClass="regular-label" stylesheets="@../../estilos/estilosLabel.css" />
+            <HBox layoutY="222.0" prefHeight="58.0" prefWidth="382.0">
+               <children>
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="58.0" prefWidth="191.0" styleClass="alert-button-secondary" stylesheets="@../../estilos/estilosBotones.css" text="Cancelar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#btnClicAceptar" prefHeight="58.0" prefWidth="191.0" styleClass="alert-button-primary" stylesheets="@../../estilos/estilosBotones.css" text="Aceptar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

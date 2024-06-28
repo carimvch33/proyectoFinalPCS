@@ -1,0 +1,32 @@
+.alert {
+    -fx-background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+    -fx-background-radius: 10px; /* Borde redondeado */
+    -fx-border-radius: 10px; /* Borde redondeado */
+    -fx-border-color: transparent; /* Borde transparente */
+}
+
+.alert .header-panel {
+    -fx-background-color: transparent; /* Fondo del encabezado transparente */
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: #2196F3; /* Color del texto del encabezado azul */
+}
+
+.alert .content {
+    -fx-background-color: transparent; /* Fondo del contenido transparente */
+}
+
+.alert .button-bar {
+    -fx-background-color: transparent; /* Fondo de la barra de botones transparente */
+}
+
+.alert .button-bar .button {
+    -fx-background-color: transparent; /* Fondo de los botones transparente */
+    -fx-border-color: transparent; /* Borde transparente */
+    -fx-text-fill: #2196F3; /* Color del texto de los botones azul */
+}
+
+.alert .button-bar .button.cancel-button {
+    -fx-text-fill: #FF3B30; /* Color del texto del botón Cancelar rojo */
+}

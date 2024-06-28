@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="664.0" prefWidth="983.0" styleClass="transparent" stylesheets="@../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.FXMLIniciarSesionController">
+   <children>
+      <Pane fx:id="paneLogin" layoutX="45.0" layoutY="30.0" prefHeight="560.0" prefWidth="895.0" styleClass="pane-alert" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <TextField fx:id="tfUsuario" focusTraversable="false" layoutX="543.0" layoutY="252.0" prefHeight="62.0" prefWidth="260.0" styleClass="password-field-sup" stylesheets="@../estilos/estilosLogin.css" />
+            <TextField fx:id="tfPasswordVisible" layoutX="543.0" layoutY="313.0" prefHeight="62.0" prefWidth="260.0" styleClass="password-field-inf" stylesheets="@../estilos/estilosLogin.css" />
+            <PasswordField fx:id="tfPassword" focusTraversable="false" layoutX="543.0" layoutY="313.0" prefHeight="62.0" prefWidth="260.0" styleClass="password-field-inf" stylesheets="@../estilos/estilosLogin.css" />
+            <Label layoutX="553.0" layoutY="260.0" styleClass="label-tf" stylesheets="@../estilos/estilosLogin.css" text="Usuario o Núm. de Personal:" />
+            <Label layoutX="553.0" layoutY="321.0" styleClass="label-tf" stylesheets="@../estilos/estilosLogin.css" text="Contraseña:" />
+            <Button fx:id="btnIniciarSesion" focusTraversable="false" layoutX="543.0" layoutY="416.0" mnemonicParsing="false" onAction="#btnClicIniciarSesion" prefHeight="46.0" prefWidth="260.0" styleClass="primary-button" stylesheets="@../estilos/estilosBotones.css" text="Iniciar sesión" />
+            <Label layoutX="543.0" layoutY="142.0" styleClass="title-label" stylesheets="@../estilos/estilosLabel.css" text="Inicio de Sesión" />
+            <Label layoutX="552.0" layoutY="189.0" style="-fx-text-fill: #A1A0A3;" stylesheets="@../estilos/estilosLabel.css" text="Bienvenido al Sistema COIL-VIC">
+               <font>
+                  <Font name="Inter Regular" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnMostrarPassword" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="10.0" layoutX="759.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnClicMostrarPassword" prefHeight="62.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fx:id="ivIconoMostrar" fitHeight="28.0" fitWidth="22.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/iconos/show-password.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets top="16.0" />
+               </padding>
+            </Button>
+            <ImageView fitHeight="560.0" fitWidth="447.0" layoutX="0.0" layoutY="0.0" pickOnBounds="true" preserveRatio="true" styleClass="drop-zone">
+               <image>
+                  <Image url="@../recursos/login-image.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="635.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/coil-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

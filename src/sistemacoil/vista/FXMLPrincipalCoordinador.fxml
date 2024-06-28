@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="964.0" prefWidth="1524.0" styleClass="transparent" stylesheets="@../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.FXMLPrincipalCoordinadorController">
+   <children>
+      <BorderPane layoutX="8.0" layoutY="8.0" prefHeight="928.0" prefWidth="1483.0">
+         <center>
+            <VBox prefHeight="894.0" prefWidth="1153.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="paneSuperior" prefHeight="80.0" prefWidth="200.0" styleClass="sup-pane" stylesheets="@../estilos/estilosSideBar.css">
+                     <children>
+                        <VBox layoutX="32.0" layoutY="14.0" prefHeight="52.0" prefWidth="409.0">
+                           <children>
+                              <Label fx:id="lbCoordinador" prefHeight="25.0" prefWidth="414.0" styleClass="third-label" stylesheets="@../estilos/estilosLabel.css">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="regular-label" stylesheets="@../estilos/estilosLabel.css" text="COORDINADOR  |  EN LÍNEA" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <AnchorPane fx:id="apVentana" prefHeight="848.0" prefWidth="1153.0" styleClass="anchor-pane" stylesheets="@../estilos/estilosPane.css" />
+               </children>
+            </VBox>
+         </center>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="330.0" styleClass="pane-sidebar" stylesheets="@../estilos/estilosSideBar.css" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="15.0" layoutY="167.0" prefHeight="508.0" prefWidth="300.0" spacing="2.0">
+                     <children>
+                        <Label styleClass="sideb-label" stylesheets="@../estilos/estilosSideBar.css" text="OFERTAS DE COLABORACIÓN UV">
+                           <VBox.margin>
+                              <Insets bottom="6.0" left="12.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicRevisarRegistro" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Revisar Registro de Oferta">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/revisar-oferta.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Label styleClass="sideb-label" stylesheets="@../estilos/estilosSideBar.css" text="OFERTAS DE COLAB. EXTERNAS">
+                           <VBox.margin>
+                              <Insets bottom="6.0" left="12.0" top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicRegistrarOfertaExterna" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Registrar Oferta Externa">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/extern-colab.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label styleClass="sideb-label" stylesheets="@../estilos/estilosSideBar.css" text="COLABORACIONES">
+                           <VBox.margin>
+                              <Insets bottom="6.0" left="12.0" top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicHistorialColab" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Historial Colaboraciones">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/history-coil.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label styleClass="sideb-label" stylesheets="@../estilos/estilosSideBar.css" text="NUMERALIA">
+                           <VBox.margin>
+                              <Insets bottom="6.0" left="12.0" top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicConsultarRegion" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Consultar por Región">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/numeralia.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicConsultarArea" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Consultar por Área Académica">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/numeralia-2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label styleClass="sideb-label" stylesheets="@../estilos/estilosSideBar.css" text="   ACTIVIDADES" />
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" mnemonicParsing="false" onAction="#btnClicConsultarActividades" prefHeight="46.0" prefWidth="306.0" styleClass="button-sidebar" stylesheets="@../estilos/estilosSideBar.css" text="Consultar Evidencias">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../recursos/iconos/activadades.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="14.0" layoutX="18.0" layoutY="821.0" mnemonicParsing="false" onAction="#btnClicCerrarSesion" prefHeight="64.0" prefWidth="295.0" styleClass="button-logout" stylesheets="@../estilos/estilosSideBar.css" text="Cerrar Sesión">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../recursos/iconos/logout-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

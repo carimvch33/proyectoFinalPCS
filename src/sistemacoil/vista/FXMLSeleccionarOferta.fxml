@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apVentana" prefHeight="848.0" prefWidth="1153.0" styleClass="anchor-pane" stylesheets="@../estilos/estilosPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoil.controlador.FXMLSeleccionarOfertaController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="30.0" prefHeight="44.0" prefWidth="693.0" spacing="18.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="46.0" prefWidth="44.0" styleClass="action-button" stylesheets="@../estilos/estilosBotones.css" textOverrun="CLIP">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#4c92f580" height="42.56" offsetY="4.0" radius="21.0225" spread="0.49" width="43.53" />
+                     </effect>
+                     <image>
+                        <Image url="@../recursos/iconos/back-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Label fx:id="lbTitulo" prefHeight="41.0" prefWidth="586.0" styleClass="title-label" stylesheets="@../estilos/estilosLabel.css" text="Modificar Oferta de Colaboración">
+               <font>
+                  <Font name="Inter Bold" size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane layoutX="32.0" layoutY="100.0" prefHeight="621.0" prefWidth="1089.0" styleClass="pane" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="38.0" layoutY="32.0" prefHeight="42.0" prefWidth="517.0" spacing="12.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="orange-icon" stylesheets="@../estilos/estilosIconos.css">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../recursos/iconos/student-list.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label styleClass="subtitle-label" stylesheets="@../estilos/estilosLabel.css" text="Lista de Ofertas de colaboración">
+                     <font>
+                        <Font name="Inter Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="38.0" layoutY="94.0" prefHeight="40.0" prefWidth="511.0">
+               <children>
+                  <TextField fx:id="tfBuscarOferta" prefHeight="40.0" prefWidth="461.0" promptText="Buscar oferta de colaboración por nombre..." styleClass="search" stylesheets="@../estilos/estilosComponentes.css" />
+                  <Button mnemonicParsing="false" onAction="#btnClicCancelarBusqueda" prefHeight="40.0" prefWidth="142.0" styleClass="fourth-button" stylesheets="@../estilos/estilosBotones.css" text="Cancelar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <TableView fx:id="tvOfertas" fixedCellSize="0.0" layoutX="38.0" layoutY="156.0" prefHeight="426.0" prefWidth="1013.0" stylesheets="@../estilos/estilosTablas.css">
+               <columns>
+                  <TableColumn fx:id="colNombre" prefWidth="340.0" text="Nombre del curso" />
+                  <TableColumn fx:id="colExperienciaEducativa" prefWidth="399.0" text="Experiencia Educativa" />
+                  <TableColumn fx:id="colPeriodo" prefWidth="159.0" text="Periodo" />
+                  <TableColumn fx:id="colRegion" prefWidth="115.0" text="Región" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="46.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/iconos/search-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="758.0" prefHeight="90.0" prefWidth="1153.0" styleClass="toolbar" stylesheets="@../estilos/estilosPane.css">
+         <children>
+            <HBox layoutX="659.0" layoutY="23.0" prefHeight="44.0" prefWidth="454.0" spacing="24.0">
+               <children>
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="46.0" prefWidth="190.0" styleClass="secondary-button" stylesheets="@../estilos/estilosBotones.css" text="Cancelar Edición">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#btnClicModificar" prefHeight="46.0" prefWidth="240.0" styleClass="primary-button" stylesheets="@../estilos/estilosBotones.css" text="Modificar oferta de colaboración">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

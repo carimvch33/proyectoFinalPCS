@@ -1,0 +1,33 @@
+/*Estilos para Labels*/
+.title-label {
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 34px;
+}
+
+.subtitle-label {
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 28px;
+}
+
+.third-label {
+    -fx-font-family: 'Inter Medium';
+    -fx-font-size: 16px;
+}
+
+.error-label {
+    -fx-font-family: 'Inter';
+    -fx-text-fill: #FF1654;
+    -fx-font-size: 12px;
+}
+
+.regular-label {
+    -fx-font-family: 'Inter';
+    -fx-font-size: 16px;
+    -fx-text-fill: #A1A0A3;
+}
+
+.alert-title-label {
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 22px;
+}
+

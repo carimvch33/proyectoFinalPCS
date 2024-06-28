@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemacoilfx.controlador.FXMLAdministradorColaboracionesController">
+   <children>
+      <Button focusTraversable="false" layoutX="231.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClicConcluir" text="Concluir" />
+      <TableView fx:id="tvColaboraciones" focusTraversable="false" layoutX="52.0" layoutY="130.0" prefHeight="366.0" prefWidth="646.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="96.0" text="Nombre" />
+            <TableColumn fx:id="colIdioma" prefWidth="84.0" text="Idioma" />
+            <TableColumn fx:id="colExperienciaEducativa" prefWidth="128.0" text="Experiencia educativa" />
+            <TableColumn fx:id="colFechaInicio" prefWidth="102.0" text="Fecha inicio" />
+            <TableColumn fx:id="colFechaConclusión" prefWidth="102.0" text="Fecha conclusión" />
+            <TableColumn fx:id="colProfesorExterno" prefWidth="144.0" text="Profesor externo" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfBusquedaColaboracion" focusTraversable="false" layoutX="52.0" layoutY="85.0" promptText="Buscar colaboración" />
+      <Pane prefHeight="65.0" prefWidth="750.0" style="-fx-background-color: #6230FF;">
+         <children>
+            <Label layoutX="201.0" layoutY="11.0" text="MIS COLABORACIONES" textFill="WHITE">
+               <font>
+                  <Font name="Candara" size="35.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnRegresar" focusTraversable="false" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="🡨" />
+         </children>
+      </Pane>
+      <Button fx:id="btnSubirEvidencias" focusTraversable="false" layoutX="321.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClicSubirEvidencias" text="Subir evidencias" />
+      <Button fx:id="btnEliminarEstudiantes" focusTraversable="false" layoutX="453.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClicEliminarEstudiantes" text="Eliminar estudiantes" />
+   </children>
+</AnchorPane>
